@@ -1,23 +1,17 @@
 import React from 'react';
+import Cards from './Cards/Cards'
+import { Container, Row, Col } from 'react-bootstrap';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function App () {
+    return (
+        <>
+            <Container>
+                <Row>
+                    <Cards />
+                </Row>         
+            </Container>
+        </>
+    );
 }
 
 export default App;
