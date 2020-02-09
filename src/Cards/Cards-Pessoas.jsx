@@ -19,7 +19,6 @@ class Cards extends Component {
         return (
             <>
                 {this.state.digimons.map(digimon =>
-                    digimon.id <= 6 ?
                     <Col>
                         <Card style={{ width: "18rem" }}>
                             <Card.Img variant="top" src={digimon.img} />
@@ -32,7 +31,6 @@ class Cards extends Component {
                             </Card.Body>
                         </Card>
                     </Col>
-                    : ''
                 )}
             </>
         );

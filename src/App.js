@@ -1,6 +1,7 @@
 import React from 'react';
 import Cards from './Cards/Cards'
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
+import Footer from './Footer/Footer'
 
 function App () {
     return (
@@ -10,6 +11,7 @@ function App () {
                     <Cards />
                 </Row>         
             </Container>
+            <Footer />
         </>
     );
 }
