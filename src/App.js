@@ -1,19 +1,24 @@
 import React from 'react';
-import Cards from './Cards/Cards'
-import { Container, Row } from 'react-bootstrap';
-import Footer from './Footer/Footer'
+import { Switch, Route } from 'react-router-dom';
+import Home from './Componentes/Pages/Home';
+import DetailDigimon from './Componentes/Pages/DetailDigimon';
+import { Page404 } from './Componentes/Pages/Page404';
 
-function App () {
+import './App.css';
+import 'bulma/css/bulma.css';
+
+class App extends React.Component {
+  render() {
     return (
-        <>
-            <Container>
-                <Row>
-                    <Cards />
-                </Row>         
-            </Container>
-            <Footer />
-        </>
+      <div className="App">
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/DetailDigimon/:name" component={DetailDigimon} />
+          <Route component={Page404} />
+        </Switch>
+      </div>
     );
+  }
 }
 
 export default App;
