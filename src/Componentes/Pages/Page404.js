@@ -9,7 +9,7 @@ export const Page404 = () => {
       <h1>Page 404!</h1>
       <span>No found Page.</span>
       <br />
-      <Link to="/">Voltar</Link>
+      <Link to="/Digimons">Voltar</Link>
     </div>
   );
 };

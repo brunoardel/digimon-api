@@ -12,7 +12,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/Digimons" component={Home} />
           <Route exact path="/DetailDigimon/:name" component={DetailDigimon} />
           <Route component={Page404} />
         </Switch>

@@ -18,7 +18,7 @@ export const InfoDigimon = (props) => {
           <br />
           <p>Nivel: {level}</p>
           <p></p>
-          <Link to="/">Voltar</Link>
+          <Link to="/Digimons">Voltar</Link>
         </div>
       </div>
     </div>
