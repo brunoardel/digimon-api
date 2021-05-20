@@ -15,7 +15,10 @@ const CardLayout = (props) => {
       <div className="media-content">
         <p className="title is-4">{props.name}</p>
         <p className="subtitle is-6">{props.level}</p>
-        <Link className="has-text-info" to={`/DetailDigimon/${props.name}`}>
+        <Link
+          className="has-text-info"
+          to={`/Digimons/DetailDigimon/${props.name}`}
+        >
           Ver mais detalhes
         </Link>
       </div>
