@@ -1,8 +1,7 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
-import Home from './Componentes/Pages/Home';
-import DetailDigimon from './Componentes/Pages/DetailDigimon';
-import { Page404 } from './Componentes/Pages/Page404';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import Home from './pages/Home';
+import DetailDigimon from './pages/DetailDigimon';
 
 import './App.css';
 import 'bulma/css/bulma.css';
@@ -11,15 +10,17 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Switch>
-          <Route exact path="/Digimons" component={Home} />
-          <Route
-            exact
-            path="/Digimons/DetailDigimon/:name"
-            component={DetailDigimon}
-          />
-          <Route component={Page404} />
-        </Switch>
+        <BrowserRouter>
+          <Switch>
+            <Route exact path="/digimons" component={Home} />
+            <Route
+              exact
+              path="/digimons/detail_digimon/:name"
+              component={DetailDigimon}
+            />
+            <Redirect to="/digimons" />
+          </Switch>
+        </BrowserRouter>
       </div>
     );
   }

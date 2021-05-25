@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export const InfoDigimon = (props) => {
+function CardDetails(props) {
   const { img, name, level } = props;
+
   return (
     <div className="container-fluid t_container ">
       <div className="columns">
@@ -18,9 +19,11 @@ export const InfoDigimon = (props) => {
           <br />
           <p>Nivel: {level}</p>
           <p></p>
-          <Link to="/Digimons">Voltar</Link>
+          <Link to="/digimons">Voltar</Link>
         </div>
       </div>
     </div>
   );
-};
+}
+
+export default CardDetails;

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { InfoDigimon } from './../Componente/InfoDigimonLayout';
-import Navbar from './../Componente/Navbarlayout';
+import CardDetails from '../components/CardDetails';
+import Navbar from '../components/Navbar';
 
 class DetailDigimon extends React.Component {
   static propTypes = {
@@ -37,7 +37,7 @@ class DetailDigimon extends React.Component {
     return (
       <div>
         <Navbar />
-        <InfoDigimon img={img} level={level} name={name} />
+        <CardDetails img={img} level={level} name={name} />
       </div>
     );
   }

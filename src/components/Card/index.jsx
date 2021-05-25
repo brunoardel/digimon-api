@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const CardLayout = (props) => {
+const Card = (props) => {
   /* console.log('props', props); */
 
   return (
@@ -17,7 +17,7 @@ const CardLayout = (props) => {
         <p className="subtitle is-6">{props.level}</p>
         <Link
           className="has-text-info"
-          to={`/Digimons/DetailDigimon/${props.name}`}
+          to={`/digimons/detail_digimon/${props.name}`}
         >
           Ver mais detalhes
         </Link>
@@ -26,4 +26,4 @@ const CardLayout = (props) => {
   );
 };
 
-export default CardLayout;
+export default Card;
