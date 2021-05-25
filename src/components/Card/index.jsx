@@ -5,14 +5,14 @@ const Card = (props) => {
   /* console.log('props', props); */
 
   return (
-    <div className="card CardDigimon">
+    <div className="card">
       <div className="card-image">
         <figure className="image is-128x128">
           <img src={props.img} alt={props.name} />
         </figure>
       </div>
 
-      <div className="media-content">
+      <div className="card-content">
         <p className="title is-4">{props.name}</p>
         <p className="subtitle is-6">{props.level}</p>
         <Link

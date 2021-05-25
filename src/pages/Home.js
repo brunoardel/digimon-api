@@ -83,25 +83,25 @@ class Home extends Component {
                 </button>
               </p>
             </form>
-          </div>
-          {IsLoading
-            ? this._renderSpinner()
-            : Digimons.length > 0 && (
-                <div className="container DigimonList-item">
-                  {Digimons.map((digimon, i) => {
-                    return (
-                      <div key={i} className="DigimonList">
+
+            <div className="containerCards">
+              {IsLoading
+                ? this._renderSpinner()
+                : Digimons.length > 0 && (
+                    <div className="cards">
+                      {Digimons.map((digimon, i) => (
                         <Card
+                          key={i}
                           name={digimon.name}
                           img={digimon.img}
                           level={digimon.level}
                         />
-                      </div>
-                    );
-                  })}
-                </div>
-              )}
-          {errorMessage && <p className="CardDigimon">{errorMessage}</p>}
+                      ))}
+                    </div>
+                  )}
+              {errorMessage && <p className="CardDigimon">{errorMessage}</p>}
+            </div>
+          </div>
         </div>
         <Footer />
       </>
