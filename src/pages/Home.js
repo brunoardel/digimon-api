@@ -4,61 +4,75 @@ import Notification from '../components/Notification';
 import Spinner from '../components/Spinner';
 import Card from '../components/Card';
 import Footer from '../components/Footer';
+import { getDigimons } from '../services/digimons';
+import { Link } from 'react-router-dom';
 
 class Home extends Component {
   state = { Digimons: [], IsLoading: false, inputData: '', errorMessage: '' };
 
-  componentDidMount() {
+  async componentDidMount() {
     this.setState({ IsLoading: true });
 
-    fetch('https://digimon-api.herokuapp.com/api/digimon')
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        this.setState({ Digimons: data, IsLoading: false });
-        console.log('Digimons ', this.state.Digimons);
-      })
-      .then((res) => {
-        const result = this.state.Digimons.filter(
-          (digimon) => digimon.name === 'Motimon',
-        );
-        console.log('encontrado', result);
-      });
+    const digimons = await getDigimons(
+      'https://digimon-api.herokuapp.com/api/digimon',
+    );
+
+    this.setState({ Digimons: digimons, IsLoading: false });
   }
 
-  _handleChange = (e) => {
-    console.log(e.target.value);
+  handleChange = (e) => {
     this.setState({ inputData: e.target.value });
   };
 
-  _hanldeSubmit = (e) => {
+  handleSubmit = (e) => {
     e.preventDefault();
     this.setState({ IsLoading: true });
 
-    const { inputData } = this.state;
+    const result = this.state.Digimons.find(
+      (digimon) => digimon.name === this.state.inputData,
+    );
 
-    fetch(`https://digimon-api.herokuapp.com/api/digimon/name/${inputData}`)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        /*  console.log(data.ErrorMsg); */
-
-        if (data.ErrorMsg) {
-          console.log('caiu no erro: ' + data.ErrorMsg);
-          this.setState({ errorMessage: data.ErrorMsg });
-        }
-
-        this.setState({ Digimons: data, IsLoading: false });
-        console.log('Pesquisa ', this.state.Digimons);
+    if (!result) {
+      this.setState({
+        IsLoading: false,
+        errorMessage: 'Digimon não encontrado',
       });
+
+      return;
+    }
+
+    if (result) {
+      this.setState({
+        Digimons: [result],
+        IsLoading: false,
+        errorMessage: '',
+      });
+
+      return;
+    }
   };
 
-  _renderSpinner = () => {
+  handleSearch = async () => {
+    this.setState({ IsLoading: true, errorMessage: '' });
+
+    const digimons = await getDigimons(
+      'https://digimon-api.herokuapp.com/api/digimon',
+    );
+
+    this.setState({
+      Digimons: digimons,
+      IsLoading: false,
+      errorMessage: '',
+      inputData: '',
+    });
+  };
+
+  renderSpinner = () => {
     return <Spinner />;
   };
 
   render() {
-    const { Digimons, IsLoading, errorMessage } = this.state;
+    const { Digimons, IsLoading, inputData, errorMessage } = this.state;
 
     return (
       <>
@@ -68,38 +82,73 @@ class Home extends Component {
         <br />
         <div>
           <div className="container">
-            <form className="field is-grouped " onSubmit={this._hanldeSubmit}>
+            <form
+              className="field is-grouped form-search"
+              onSubmit={this.handleSubmit}
+            >
               <p className="control is-expanded">
                 <input
                   className="input"
-                  type="text"
+                  type="search"
                   placeholder="Insira o nome aqui..."
-                  onChange={this._handleChange}
+                  value={inputData}
+                  onChange={this.handleChange}
                 />
               </p>
               <p className="control">
-                <button className="button is-info" onClick={this._hanldeSubmit}>
+                <button className="button is-info" onClick={this.handleSubmit}>
                   Pesquisar
                 </button>
               </p>
             </form>
 
             <div className="containerCards">
-              {IsLoading
-                ? this._renderSpinner()
-                : Digimons.length > 0 && (
-                    <div className="cards">
-                      {Digimons.map((digimon, i) => (
-                        <Card
-                          key={i}
-                          name={digimon.name}
-                          img={digimon.img}
-                          level={digimon.level}
+              {errorMessage && (
+                <span>
+                  <p className="ErrorMessage">{errorMessage}</p>
+                  <button
+                    className="button is-outlined ButtonReload"
+                    onClick={this.handleSearch}
+                  >
+                    Recarregar lista
+                  </button>
+                </span>
+              )}
+              {IsLoading && this.renderSpinner()}
+              {!errorMessage && Digimons.length > 0 && (
+                <ul className="cards">
+                  {Digimons.map((digimon, i) => (
+                    <li className="cards__item" key={i}>
+                      <div className="card">
+                        <img
+                          src={digimon.img}
+                          className="card__image card__image--fence"
+                          alt={digimon.name}
+                          onError={(e) => {
+                            e.target.onerror = null;
+                            e.target.src =
+                              'https://i.ibb.co/LRVdr48/broken-image.jpg';
+                          }}
+                          width={320}
                         />
-                      ))}
-                    </div>
-                  )}
-              {errorMessage && <p className="CardDigimon">{errorMessage}</p>}
+                        <div className="card__content">
+                          <div className="card__title">{digimon.name}</div>
+                          <p className="card__text">{digimon.level}</p>
+                          {/* <button className="btn btn--block card__btn">
+                            detalhes
+                          </button> */}
+                          <Link
+                            className="btn btn--block card__btn"
+                            to={`/digimons/detail_digimon/${digimon.name}`}
+                          >
+                            detalhes
+                          </Link>
+                        </div>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
           </div>
         </div>
