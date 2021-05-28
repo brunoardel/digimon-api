@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/pessoas-api/static/css/main.dbd272c8.chunk.css",
-    "main.js": "/pessoas-api/static/js/main.10b6e3fc.chunk.js",
-    "main.js.map": "/pessoas-api/static/js/main.10b6e3fc.chunk.js.map",
-    "runtime-main.js": "/pessoas-api/static/js/runtime-main.6240752c.js",
-    "runtime-main.js.map": "/pessoas-api/static/js/runtime-main.6240752c.js.map",
-    "static/css/2.aeb9fc71.chunk.css": "/pessoas-api/static/css/2.aeb9fc71.chunk.css",
-    "static/js/2.14ed8f69.chunk.js": "/pessoas-api/static/js/2.14ed8f69.chunk.js",
-    "static/js/2.14ed8f69.chunk.js.map": "/pessoas-api/static/js/2.14ed8f69.chunk.js.map",
-    "index.html": "/pessoas-api/index.html",
-    "precache-manifest.006a32a417e98bd44466135aa7cd5e71.js": "/pessoas-api/precache-manifest.006a32a417e98bd44466135aa7cd5e71.js",
-    "service-worker.js": "/pessoas-api/service-worker.js",
-    "static/css/2.aeb9fc71.chunk.css.map": "/pessoas-api/static/css/2.aeb9fc71.chunk.css.map",
-    "static/css/main.dbd272c8.chunk.css.map": "/pessoas-api/static/css/main.dbd272c8.chunk.css.map"
+    "main.css": "/digimon-api/static/css/main.dbd272c8.chunk.css",
+    "main.js": "/digimon-api/static/js/main.ac5e78ea.chunk.js",
+    "main.js.map": "/digimon-api/static/js/main.ac5e78ea.chunk.js.map",
+    "runtime-main.js": "/digimon-api/static/js/runtime-main.519a89bb.js",
+    "runtime-main.js.map": "/digimon-api/static/js/runtime-main.519a89bb.js.map",
+    "static/css/2.aeb9fc71.chunk.css": "/digimon-api/static/css/2.aeb9fc71.chunk.css",
+    "static/js/2.14ed8f69.chunk.js": "/digimon-api/static/js/2.14ed8f69.chunk.js",
+    "static/js/2.14ed8f69.chunk.js.map": "/digimon-api/static/js/2.14ed8f69.chunk.js.map",
+    "index.html": "/digimon-api/index.html",
+    "precache-manifest.cf6668a6b29103d9814575ef1dff5d8d.js": "/digimon-api/precache-manifest.cf6668a6b29103d9814575ef1dff5d8d.js",
+    "service-worker.js": "/digimon-api/service-worker.js",
+    "static/css/2.aeb9fc71.chunk.css.map": "/digimon-api/static/css/2.aeb9fc71.chunk.css.map",
+    "static/css/main.dbd272c8.chunk.css.map": "/digimon-api/static/css/main.dbd272c8.chunk.css.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.6240752c.js",
+    "static/js/runtime-main.519a89bb.js",
     "static/css/2.aeb9fc71.chunk.css",
     "static/js/2.14ed8f69.chunk.js",
     "static/css/main.dbd272c8.chunk.css",
-    "static/js/main.10b6e3fc.chunk.js"
+    "static/js/main.ac5e78ea.chunk.js"
   ]
 }
