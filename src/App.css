@@ -44,7 +44,7 @@ body {
   position: relative;
   width: 64px;
   height: 64px;
-  margin: 64px;
+  margin: 64px 0 42px 0;
 }
 .lds-ring div {
   box-sizing: border-box;
@@ -86,7 +86,7 @@ body {
 }
 
 .loading-spinner {
-  margin-bottom: 20px;
+  margin-bottom: 96px;
 }
 
 .t_container {
@@ -99,7 +99,7 @@ body {
 }
 
 .containerCards {
-  margin-top: 40px 0;
+  margin: 40px 0;
 }
 
 .cards {

@@ -5,7 +5,6 @@ import Spinner from '../components/Spinner';
 import Card from '../components/Card';
 import Footer from '../components/Footer';
 import { getDigimons } from '../services/digimons';
-import { Link } from 'react-router-dom';
 
 class Home extends Component {
   state = { Digimons: [], IsLoading: false, inputData: '', errorMessage: '' };
@@ -37,8 +36,6 @@ class Home extends Component {
         IsLoading: false,
         errorMessage: 'Digimon não encontrado',
       });
-
-      return;
     }
 
     if (result) {
@@ -47,8 +44,6 @@ class Home extends Component {
         IsLoading: false,
         errorMessage: '',
       });
-
-      return;
     }
   };
 
@@ -65,10 +60,6 @@ class Home extends Component {
       errorMessage: '',
       inputData: '',
     });
-  };
-
-  renderSpinner = () => {
-    return <Spinner />;
   };
 
   render() {
@@ -104,7 +95,7 @@ class Home extends Component {
 
             <div className="containerCards">
               {errorMessage && (
-                <span>
+                <>
                   <p className="ErrorMessage">{errorMessage}</p>
                   <button
                     className="button is-outlined ButtonReload"
@@ -112,39 +103,14 @@ class Home extends Component {
                   >
                     Recarregar lista
                   </button>
-                </span>
+                </>
               )}
-              {IsLoading && this.renderSpinner()}
-              {!errorMessage && Digimons.length > 0 && (
+              {IsLoading && <Spinner />}
+              {!errorMessage && !IsLoading && Digimons.length > 0 && (
                 <ul className="cards">
                   {Digimons.map((digimon, i) => (
                     <li className="cards__item" key={i}>
-                      <div className="card">
-                        <img
-                          src={digimon.img}
-                          className="card__image card__image--fence"
-                          alt={digimon.name}
-                          onError={(e) => {
-                            e.target.onerror = null;
-                            e.target.src =
-                              'https://i.ibb.co/LRVdr48/broken-image.jpg';
-                          }}
-                          width={320}
-                        />
-                        <div className="card__content">
-                          <div className="card__title">{digimon.name}</div>
-                          <p className="card__text">{digimon.level}</p>
-                          {/* <button className="btn btn--block card__btn">
-                            detalhes
-                          </button> */}
-                          <Link
-                            className="btn btn--block card__btn"
-                            to={`/digimons/detail_digimon/${digimon.name}`}
-                          >
-                            detalhes
-                          </Link>
-                        </div>
-                      </div>
+                      <Card props={digimon} />
                     </li>
                   ))}
                 </ul>

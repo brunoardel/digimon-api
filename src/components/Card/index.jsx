@@ -1,19 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Card = ({ img, name, level }) => (
+const Card = ({ props: { name, img, level } }) => (
   <div className="card">
-    <div className="card-image">
-      <figure className="image is-128x128">
-        <img src={img} alt={name} />
-      </figure>
-    </div>
-
-    <div className="card-content">
-      <p className="title is-4">{name}</p>
-      <p className="subtitle is-6">{level}</p>
-      <Link className="has-text-info" to={`/digimons/detail_digimon/${name}`}>
-        Ver mais detalhes
+    <img
+      src={img}
+      className="card__image card__image--fence"
+      alt={name}
+      onError={(e) => {
+        e.target.onerror = null;
+        e.target.src = 'https://i.ibb.co/LRVdr48/broken-image.jpg';
+      }}
+      width={320}
+    />
+    <div className="card__content">
+      <div className="card__title">{name}</div>
+      <p className="card__text">{level}</p>
+      <Link className="btn btn--block card__btn" to={`/home/details/${name}`}>
+        detalhes
       </Link>
     </div>
   </div>

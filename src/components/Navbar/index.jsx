@@ -8,7 +8,7 @@ const Navbar = () => (
     aria-label="main navigation"
   >
     <div className="navbar-brand">
-      <Link to="/Digimons" className="navbar-item">
+      <Link to="/home" className="navbar-item">
         Digimon Api
       </Link>
     </div>
